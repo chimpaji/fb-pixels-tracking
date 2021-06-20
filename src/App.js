@@ -1,23 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { useEffect, useState } from "react";
+import ReactPixel from "react-facebook-pixel";
+import ViewContent from "./Viewcontent";
+import AddToCart from "./AddToCart";
+import Purchase from "./Purchase";
 function App() {
+  const [count, setCount] = useState(0);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div>{count}</div>
+      <button onClick={(e) => setCount(count + 1)} className="bg-green-500 p-2">
+        Next Event
+      </button>
+      <button onClick={(e) => setCount(0)} className="bg-blue-500 p-2">
+        Reset
+      </button>
+      {count === 1 && <ViewContent />}
+      {count === 2 && <AddToCart />}
+      {count === 3 && <Purchase />}
     </div>
   );
 }
